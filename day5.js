@@ -1,7 +1,5 @@
 import {countriesArray} from './countries.js'
 import {webTech} from './web_tech.js'
-// import countries from "./countries"
-// import webtech from "./webtech"
 
   const emptyArray = []
   const arrayNumbers = ['Mufidat', 'Adeyemi', true, 30, 'Akintayo']
