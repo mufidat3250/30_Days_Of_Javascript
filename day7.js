@@ -229,28 +229,27 @@ const randomHexaNumberGenerator = () => {
 };
 console.log(randomHexaNumberGenerator());
 const userIdGenerator = () => {};
-// const userIdGeneratedByUser = (char,idToGenerate) => {
-// let numOfChar = Number(prompt('Enter the number of character'));
-// let numOfIdGen = Number(prompt('Enter the number of ID'))
-// let result =' ';
-// let newResult = ''
-// let newArr = []
-//     let character = 'ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmopqrsstuvwxy1234567890'
-//     const characterLegth = character.length
-//     for(let i = 0; i < idToGenerate; i++){
-//         for(let j = 0; j <= char; j++){
-//             let random = Math.floor(Math.random() * characterLegth)
-//             result += character[random];
-//             console.log(result)
-//         }
+ const userIdGeneratedByUser = () => {
+  let numOfChar = Number(prompt('Enter The number of char'));
+  let numOfId = Number(prompt('Enter the number of id'))
+  let ids = ''
+  for(let i = 0; i <= numOfId; i++){
+    let id = ''
+    for(let j = 0; j <= numOfChar; j++){
+    let character = 'ABCDEFGHIJKLMOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
+      let randomChar = Math.floor(Math.random() * character.length)
+      console.log(randomChar)
+      id += character[randomChar]
+      console.log({id})
+    } 
+    ids += `${id}`
+    ids += "\n"   
+  }
+  return ids
+}
 
-//     }
-
-//     return result;
-
-// }
-// console.log(userIdGeneratedByUser( 4,7))
-// }
+console.log(userIdGeneratedByUser())
+userIdGeneratedByUser()
 
 const rgbaColorGenerator = () => {
   let code1 = `${Math.floor(Math.random() * 255)}`;
@@ -456,17 +455,30 @@ const reeverseCountries = (arr) => {
 }
 console.log(reeverseCountries(countries))
 
-const usserIdGeneratedByUser = () => {
-    let CharacterNum = Number(prompt('Enter the number of character'));
-    let idNum = Number(prompt('Enter the number of ids'))
-    let IdGenByUser = ''
-    for(let i = 0; i< idNum; i++){
-        let randomCharacter = Math.random().toString(36).slice(-CharacterNum)
-        IdGenByUser +=randomCharacter
-        IdGenByUser += '\n'
+
+// const usserIdGeneratedByUser = () => {
+//     let CharacterNum = Number(prompt('Enter the number of character'));
+//     let idNum = Number(prompt('Enter the number of ids'))
+//     let IdGenByUser = ''
+//     for(let i = 0; i< idNum; i++){
+//         let randomCharacter = Math.random().toString(36).slice(-CharacterNum)
+//         IdGenByUser +=randomCharacter
+//         IdGenByUser += '\n'
         
+//     }
+//     console.log(CharacterNum)
+//     return IdGenByUser
+// }
+// console.log(usserIdGeneratedByUser())
+
+const seven = [];
+const sevenRandom = () => {
+  for (let i = 0; i <= 7; i++) {
+    let b = Math.floor(Math.random() * 50);
+    if (!seven.includes(b) ) {
+      seven.push(b);
     }
-    console.log(CharacterNum)
-    return IdGenByUser
-}
-console.log(usserIdGeneratedByUser())
+  }
+  return seven;
+};
+console.log(sevenRandom());
