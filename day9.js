@@ -21,9 +21,9 @@ const products = [
 // filter(()=> {})
 // reduce(()=>{})
 
-countries.forEach((country) => console.log(country));
-names.forEach((name) => console.log(name));
-numbers.forEach((num) => console.log(num));
+// countries.forEach((country) => console.log(country));
+// names.forEach((name) => console.log(name));
+// numbers.forEach((num) => console.log(num));
 let countriesUppercase = countries.map((country) => country.toUpperCase());
 let countryLength = countries.map((country) => country.length);
 let numberTosqure = numbers.map((num) => num ** 2);
@@ -95,45 +95,43 @@ const getLastTenCountries = (countries) => {
   return countries.sort((a, b) => a - b).slice(-10);
 };
 const initialLetters = (countries) => {
-  let letterCount = {};
-  let newCountries = [...countries];
-  // console.log(newCountries[1], )
-  //   for(let i = 0; i < newCountries.length; i++){
-  //     console.log('available', newCountries[i].charAt(0))
-  //     letterCount = 1
-  //   }
-  console.log(letterCount);
-  let allLetter = countries.map((country) => {
-    letterCount.country = country;
-  });
-  console.log(...allLetter);
+  let newCountries = [...countries].map((country) => country.charAt(0));
+  let countriesSet = new Set(newCountries);
+  let counts = [];
+  for (const c of countriesSet) {
+    let filteredCountries = newCountries.filter(
+      (country) => country.charAt(0) === c
+    );
+    counts.push({ letters: c, count: filteredCountries.length });
+  }
+  return counts;
 };
 
-console.log(countriesUppercase);
-console.log(countryLength);
-console.log(numberTosqure);
-console.log(nameToUppercase);
-console.log(product);
-console.log(countriesEndWithLand);
-console.log(countriesWithsexChar);
-console.log(productPriceWithValue);
-console.log(getStringLists(["Adeyemi", "funke", 1, true]));
-console.log(numSum);
-console.log(allCountries);
-console.log(nameLength);
-console.log(firstCountriesWithSixLetters);
-console.log(firstCountriesWithSixLetters);
-console.log(countriesWithLand);
-console.log(checkNorWayPosition);
-console.log(totalPrice);
-console.log(categorizeCounntries(fullCountries));
-console.log(getFirstTenCountries(fullCountries));
-console.log(getLastTenCountries(fullCountries));
+// console.log(countriesUppercase);
+// console.log(countryLength);
+// console.log(numberTosqure);
+// console.log(nameToUppercase);
+// console.log(product);
+// console.log(countriesEndWithLand);
+// console.log(countriesWithsexChar);
+// console.log(productPriceWithValue);
+// console.log(getStringLists(["Adeyemi", "funke", 1, true]));
+// console.log(numSum);
+// console.log(allCountries);
+// console.log(nameLength);
+// console.log(firstCountriesWithSixLetters);
+// console.log(firstCountriesWithSixLetters);
+// console.log(countriesWithLand);
+// console.log(checkNorWayPosition);
+// console.log(totalPrice);
+// console.log(categorizeCounntries(fullCountries));
+// console.log(getFirstTenCountries(fullCountries));
+// console.log(getLastTenCountries(fullCountries));
 console.log(initialLetters(fullCountries));
 
 //level 3
 
-console.log(countriesObj);
+// console.log(countriesObj);
 
 let sortedCountriesName = (countriesObj) => {
   return countriesObj.sort((a, b) => a.name - b.name);
@@ -146,81 +144,107 @@ let sortedCountryPopulation = () => {
 };
 
 const mostSpokenLanguage = (countries, number) => {
-  let higestLanguage = { country: "English", count: 0 };
-  let spokenLangauage = [];
-  let a = countries.map((country) => country.languages).flat();
-
-  for (let i = 0; i < a.length; i++) {
-    if (a[i]) {
-      higestLanguage.country = a[i];
-      higestLanguage.count += 1;
-      spokenLangauage.push(higestLanguage);
+  let counts = [];
+  let higestCount = {language: '', count: 0}
+  let newCounntries = [...countries];
+  console.log(newCounntries);
+  let languages = newCounntries.map((country) => country.languages).flat();
+  let uniqueLanguage = new Set(languages);
+  console.log(uniqueLanguage, languages);
+  console.log(uniqueLanguage);
+  for (let l of uniqueLanguage) {
+    let filteredLangeuage = languages.filter((country) => country === l);
+    counts.push({ language:l, count: filteredLangeuage.length});
+  }
+  for(let count of counts){
+    if(count.count > higestCount.count){
+      higestCount.language = count.language;
+      higestCount.count = count.count
     }
   }
-  console.log(a);
-  console.log(spokenLangauage);
+  console.log(higestCount, counts)
+   return counts.sort((a,b) => {
+    if(b.count < a.count) return -1
+    if(b.count > a.count) return 1
+    return 0
+  }).slice(0, 10)
 };
+const mostPopulatedCountries = (countries, number) => {
+  let counts = []
+  console.log(countries)
+   let newCountries = [...countries]
+   for(let country of newCountries){
+      counts.push({country:country.name, population:country.population})
+   }
+   return counts.sort((a,b)=> {
+    if(b.population < a.population) return -1
+    if(b.population > a.population)  return 1
+    return 0
+   }).slice(0, number)
+} 
 
-console.log(sortedCountriesName(countriesObj));
-console.log(sortedCountriesByCapital(countriesObj));
-console.log(sortedCountryPopulation(countriesObj));
+// console.log(sortedCountriesName(countriesObj));
+// console.log(sortedCountriesByCapital(countriesObj));
+// console.log(sortedCountryPopulation(countriesObj));
 console.log(mostSpokenLanguage(countriesObj));
+console.log(mostPopulatedCountries(countriesObj, 10))
+console.log(mostPopulatedCountries(countriesObj, 3))
 
-`Try to develop a program which calculate measure of central
- tendency of a sample(mean, median, mode) and measure of variability
- (range, variance, standard deviation). In addition to those measures 
-  find the min, max, count, percentile, and frequency distribution of the sample. You can
-   create an object called statistics and create all the functions which do statistical calculations
- as method for the statistics object. Check the output below.`;
 
- const ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
- const statistic = {
-  age:ages,
-  count: function(){
-    return this.age.length
+// `Try to develop a program which calculate measure of central
+//  tendency of a sample(mean, median, mode) and measure of variability
+//  (range, variance, standard deviation). In addition to those measures 
+//   find the min, max, count, percentile, and frequency distribution of the sample. You can
+//    create an object called statistics and create all the functions which do statistical calculations
+//  as method for the statistics object. Check the output below.`;
+
+const ages = [
+  31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37,
+  31, 34, 24, 33, 29, 26,
+];
+const statistic = {
+  age: ages,
+  count: function () {
+    return this.age.length;
   },
   sum: function () {
     let sum = 0;
-    for(let age of ages) {
-      sum += age
+    for (let age of ages) {
+      sum += age;
     }
-    return sum
+    return sum;
   },
   min: function () {
-    return Math.min(...this.age)
+    return Math.min(...this.age);
   },
-  max: function (){
-    return Math.max(...this.age)
+  max: function () {
+    return Math.max(...this.age);
   },
   range: function () {
-    return this.max() - this.min()
+    return this.max() - this.min();
   },
   mean: function () {
-    return Math.ceil(ages.reduce((acc, cur)=> acc + cur , 0)/ ages.length)
+    return Math.ceil(ages.reduce((acc, cur) => acc + cur, 0) / ages.length);
   },
-  median: function (){
-    let newAge = [...ages].sort()
-    let middle = Math.floor(newAge.length/2)
-      return newAge.splice(middle, 1)
+  median: function () {
+    let newAge = [...ages].sort();
+    let middle = Math.floor(newAge.length / 2);
+    return newAge.splice(middle, 1);
   },
-  mode: function (){
+  mode: function () {},
+  var: function () {},
+  std: function () {},
+  freqDist: function () {},
+};
 
-  },
-  var: function (){},
-  std: function (){},
-  freqDist: function(){}
-
- }
-
-console.log('Count:', statistic.count())
-console.log('Sum:', statistic.sum())
-console.log('Min:', statistic.min())
-console.log('Max', statistic.max())
-console.log('Range:', statistic.range())
-console.log('Mean', statistic.mean())
-console.log('median', statistic.median())
-console.log('Mode:', statistic.mode())
-console.log('Variance:', statistic.var())
-console.log('Standard Deviation', statistic.std())
-console.log('Frequency Distribution:', statistic.freqDist())
-
+// console.log('Count:', statistic.count())
+// console.log('Sum:', statistic.sum())
+// console.log('Min:', statistic.min())
+// console.log('Max', statistic.max())
+// console.log('Range:', statistic.range())
+// console.log('Mean', statistic.mean())
+// console.log('median', statistic.median())
+// console.log('Mode:', statistic.mode())
+// console.log('Variance:', statistic.var())
+// console.log('Standard Deviation', statistic.std())
+// console.log('Frequency Distribution:', statistic.freqDist())
