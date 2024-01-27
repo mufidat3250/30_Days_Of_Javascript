@@ -456,21 +456,6 @@ const reeverseCountries = (arr) => {
 console.log(reeverseCountries(countries))
 
 
-// const usserIdGeneratedByUser = () => {
-//     let CharacterNum = Number(prompt('Enter the number of character'));
-//     let idNum = Number(prompt('Enter the number of ids'))
-//     let IdGenByUser = ''
-//     for(let i = 0; i< idNum; i++){
-//         let randomCharacter = Math.random().toString(36).slice(-CharacterNum)
-//         IdGenByUser +=randomCharacter
-//         IdGenByUser += '\n'
-        
-//     }
-//     console.log(CharacterNum)
-//     return IdGenByUser
-// }
-// console.log(usserIdGeneratedByUser())
-
 const seven = [];
 const sevenRandom = () => {
   for (let i = 0; i <= 7; i++) {
