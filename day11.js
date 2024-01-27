@@ -77,3 +77,47 @@ console.log(CountriesDetail)
 const student = ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]]
 let [namee, skill_, [, , jsScore, reactScore]] = student
 console.log(namee, skill_, jsScore, reactScore)
+const students = [
+  ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]],
+  ['John', ['HTM', 'CSS', 'JS', 'React'], [85, 80, 85, 80]],
+  ['Mufidat', ['HTM', 'CSS', 'JS', 'React'], [85, 80, 85, 80]]
+]
+const convertArrayToObject = (students) => {
+  let convertedArrayToObject = []
+  for(let [name, skills, scores] of students){
+    convertedArrayToObject.push({name, skills, scores})
+  }
+    
+    return convertedArrayToObject
+
+}
+console.log(convertArrayToObject(students))
+const studentObj = {
+  name: 'David',
+  age: 25,
+  skills: {
+    frontEnd: [
+      { skill: 'HTML', level: 10 },
+      { skill: 'CSS', level: 8 },
+      { skill: 'JS', level: 8 },
+      { skill: 'React', level: 9 }
+    ],
+    backEnd: [
+      { skill: 'Node',level: 7 },
+      { skill: 'GraphQL', level: 8 },
+    ],
+    dataBase:[
+      { skill: 'MongoDB', level: 7.5 },
+    ],
+    dataScience:['Python', 'R', 'D3.js']
+  }
+}
+
+const newStudentsObj = {...studentObj}
+newStudentsObj.skills.frontEnd.push({skill:'Bootstrap', level: 8})
+console.log(newStudentsObj)
+newStudentsObj.skills.backEnd.push({skill:'Express', level: 9})
+newStudentsObj.skills.dataBase.push({skill:'SQL', level: 8})
+newStudentsObj.skills.dataScience.push('SQL')
+
+
