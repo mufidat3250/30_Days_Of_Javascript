@@ -127,7 +127,7 @@ const initialLetters = (countries) => {
 // console.log(categorizeCounntries(fullCountries));
 // console.log(getFirstTenCountries(fullCountries));
 // console.log(getLastTenCountries(fullCountries));
-console.log(initialLetters(fullCountries));
+// console.log(initialLetters(fullCountries));
 
 //level 3
 
@@ -169,7 +169,7 @@ const mostSpokenLanguage = (countries, number) => {
     return 0
   }).slice(0, 10)
 };
-const mostPopulatedCountries = (countries, number) => {
+export const mostPopulatedCountries = (countries, number) => {
   let counts = []
   console.log(countries)
    let newCountries = [...countries]
@@ -186,9 +186,9 @@ const mostPopulatedCountries = (countries, number) => {
 // console.log(sortedCountriesName(countriesObj));
 // console.log(sortedCountriesByCapital(countriesObj));
 // console.log(sortedCountryPopulation(countriesObj));
-console.log(mostSpokenLanguage(countriesObj));
-console.log(mostPopulatedCountries(countriesObj, 10))
-console.log(mostPopulatedCountries(countriesObj, 3))
+// console.log(mostSpokenLanguage(countriesObj));
+// console.log(mostPopulatedCountries(countriesObj, 10))
+// console.log(mostPopulatedCountries(countriesObj, 3))
 
 
 // `Try to develop a program which calculate measure of central
