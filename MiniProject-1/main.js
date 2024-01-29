@@ -1,14 +1,17 @@
 const hexaGen = () => Math.random().toString(16).slice(3, 9)
 console.log(hexaGen())
 
-const body = document.querySelector('body')
+const body = document.body
 const wrapper = document.querySelector('.wrapper')
 const h1 = document.querySelector('h1')
 const year = document.querySelector('.year')
 const h2 = document.querySelector('h2')
 const ul = document.querySelector('ul')
 const li = document.querySelectorAll('li') 
-const p = document.createElement('h3')
+const timeWrapper = document.createElement('div')
+const time = document.createElement('span')
+
+console.log(body)
 
 //logic
 li.forEach((li, index)=> {
@@ -31,12 +34,15 @@ setInterval(() => {
     year.style.color = `#${hexaGen()}`
 }, 1000);
 
-setInterval(()=> {
-    p.style.color = `#${hexaGen()}`
-}, 1000)
 const date = new Date
-p.innerHTML = `${date.toUTCString()}`
-console.log(p)
+
+setInterval(()=> {
+    time.style.backgroundColor = `#${hexaGen()}`
+}, 2000)
+
+
+// adding attribute to tags
+
 //style 
 body.style.height = '100vh'
 body.style.fontFamily ='Aria'
@@ -55,7 +61,26 @@ h2.style.paddingBottom = '0'
 h2.style.textDecoration = 'underline'
 year.style.fontSize = '3rem'
 ul.style.listStyleType = 'none'
+time.style.textAlign =  'center'
+time.style.padding = '0.4rem'
+timeWrapper.style.display = 'flex'
+timeWrapper.style.justifyContent ='center'
+timeWrapper.style.padding ='0'
+timeWrapper.style.margin = '0'
 
 
+// time.style.textAlign = 'center'
+
+
+
+//adding content to the dom
+const timeNode = document.createTextNode('i love coding')
+const node = document.createTextNode(`${date.toUTCString()}`)
+wrapper.insertBefore(timeWrapper, wrapper.childNodes[6])
+wrapper.append(timeWrapper) 
+timeWrapper.append(time)
+time.append(node)
+
+console.log(wrapper.childNodes)
 
 
