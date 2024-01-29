@@ -30,11 +30,11 @@ function isPrimeNo(x) {
         number.style.fontWeight = '700'
         number.style.fontSize = '1.5rem'
         if(isPrimeNo(i)){
-            number.style.backgroundColor = 'red'
+            number.style.backgroundColor = '#fd5e53'
         }else if(i % 2 == 0){
-            number.style.backgroundColor = 'green'
+            number.style.backgroundColor = '#24bf73'
         }else{
-            number.style.backgroundColor = 'orange'
+            number.style.backgroundColor = '#fddb3a'
         }
         numberContainer.appendChild(number)
     } 
