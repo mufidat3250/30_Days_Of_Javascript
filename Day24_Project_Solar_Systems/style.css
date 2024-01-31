@@ -1,0 +1,121 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('./images/galaxy.gif');
+}
+*{
+    box-sizing: border-box;
+}
+.container{
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 3rem;
+}
+h1{
+    color: white;
+    text-align: center;
+    font-size: 2.3rem;
+    text-shadow: 1px 3px 4px gray;
+    margin: 0;
+}
+.input-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+.input-wrapper input{
+    width: 30%;
+    padding: 0.6rem;
+    border:none;
+    outline: none;
+}
+.input-wrapper select{
+    width: 20%;
+    padding: 0.6rem;
+}
+.input-wrapper button{
+    width: fit-content;
+    padding: 1rem 1.8rem;
+    background-color: rgba(110, 111, 111, 0.9);
+    color: white;
+    font-weight: 700;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.input-wrapper select{
+    outline: none;
+    color: gray;
+    cursor: pointer;
+}
+
+.earth-value{
+    margin-top: 2.5rem;
+    padding: 2.5rem;
+    background-color: rgb(33, 31, 32,0.5);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    display: none;
+}
+.value{
+    background-color: rgb(57, 56, 56, 0.4);
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 1.2rem;
+}
+.value h4{
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.earth-image{
+    background-color: rgb(33, 31, 32,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0rem;
+    padding: 2rem;
+    display: none;
+    color: white;
+}
+
+.result{
+    height: 6rem;
+    width: 6rem;
+    border-radius: 100%;
+    background-color: rgb(57, 56, 56, 0.8);
+    display: grid;
+    place-content: center;
+    color: white;
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.required {
+    background-color:rgb(57, 56, 56, 0.8);
+    margin-top: 2rem;
+    padding: 1.7rem;
+    display: none;
+}
+.required p{
+    background-color: rgba(56, 56, 56);
+    padding: 1.5rem 0;
+    height: fit-content;
+    width: 50%;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+}
