@@ -4,8 +4,6 @@ const input = document.querySelector('#input')
 const button = document.querySelector('button')
 const numberContainer = document.querySelector('.generated-Number-container')
 
-
-
 const numberArray = [];
 const numberGenerator = (inputValue) => {
   numberContainer.innerHTML = ''

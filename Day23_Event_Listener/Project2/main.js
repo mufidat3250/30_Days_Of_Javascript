@@ -8,7 +8,8 @@ document.body.addEventListener('keypress', (e)=> {
     } 
     if(e.key == 46){
         keyPress.innerHTML = `You pressed Delete`
-    }
-        keyPress.innerHTML = `You pressed ${e.key}`
+    }   
+        let key = e.key
+        keyPress.innerHTML = `You pressed <span style ='color:green;'>${key.toUpperCase()}</span>`
     // alert(e.key)
 })
