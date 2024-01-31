@@ -5,6 +5,23 @@ const button = document.querySelector('button')
 const numberContainer = document.querySelector('.generated-Number-container')
 
 
+
+const numberArray = [];
+const numberGenerator = (inputValue) => {
+  numberContainer.innerHTML = ''
+  for (let i = 0; numberArray.length<=inputValue ; i++) {
+    let b = Math.floor(Math.random() * 10);
+    if (!numberArray.includes(i) ) {
+      numberArray.push(i);
+    }
+  }
+  return numberArray.sort((a, b)=> a - b);
+};
+
+function clearText () {
+  document.querySelector('#input').value = ''
+}
+
 function isPrimeNo(x) {
     if (x === 0 || x === 1) return false;
     for (let i = x - 1; i > 1; i--) {
@@ -13,33 +30,44 @@ function isPrimeNo(x) {
     return true;
   }
 
-button.addEventListener('click', (e)=>{
-    let regPattern = /\D+/
+const generatedNum = (max = 20) => {
+  numberContainer.innerHTML = ''
+  Array.from(Array(max).keys()).forEach((num)=> {
     let number
-    let numberWrapper 
+    let numberWrapper
+    numberWrapper = document.createElement('div')
+    number = document.createElement('span')
+    number.innerText = `${num}`
+    numberWrapper.style.height = '3rem'
+    numberWrapper.append(number)
+    numberWrapper.style.backgroundColor = `${isPrimeNo(num) ? '#fd5e53': num % 2 == 0 ? '#24bf73' :'#fddd3a'}`
+    numberWrapper.style.display = 'grid'
+    numberWrapper.style.placeItems = 'center'
+    numberWrapper.style.alignItems = 'center'
+    numberContainer.append(numberWrapper)
+  })
+}
+generatedNum()
 
-    if(regPattern.test(input.value)){
-        error.innerText = 'Input value must be a nummber'
+button.addEventListener('click', (e)=>{
+    // let regPattern = /\D+/  alternative for nan
+    if(isNaN(input.value)){
+      error.innerText = 'Input value must be a number'
+      input.style.border = '1px solid red'
+        setTimeout(() => {
+          input.style.border = '1px solid green'
+        }, 1000);
         return
-    } else if(input.value == 0){
+    } else if(!input.value){
         error.innerText = 'Enter Number value on the input field to generate nummber'
         return
      }else{
-        let inputValue = Number(input.value)
+     inputValue = Number(input.value)
      error.innerText = ''
-    for(let i = 0; i <= inputValue; i++ ){
-        numberWrapper = document.createElement('div')
-        number = document.createElement('span')
-        number.innerText = `${i}`
-        numberWrapper.style.height = '3rem'
-        numberWrapper.append(number)
-        numberWrapper.style.backgroundColor = `${isPrimeNo(i) ? '#fd5e53': i % 2 == 0 ? '#24bf73' :'#fddd3a'}`
-        numberWrapper.style.display = 'grid'
-        numberWrapper.style.placeItems = 'center'
-        numberWrapper.style.alignItems = 'center'
-        numberContainer.append(numberWrapper)
-    }
-    inputValue = ''
-     }
-     
+      generatedNum(inputValue)
+      clearText()
+  }
 })
+
+
+
