@@ -44,23 +44,25 @@ body{
     background-color: #e5c9c5;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 .error{
     color: red;
     text-align: center;
     font-weight: bold;
+    /* display: none; */
 }
 .leadboard-container{
-    display: flex;
-    align-items: center;
+display: flex;
+align-items: center;
 justify-content: space-between;
 background-color: #e5c9c5;
 padding-left: 1rem;
+font-size: 20px;
 padding-right: 4rem;
+margin-top: 2.5rem;
 }
-.leadboard-container{
-    font-size: 20px;
-}
+
 .button-wrapper .btn{
     outline: none;
     border: none;
