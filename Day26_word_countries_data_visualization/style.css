@@ -89,6 +89,11 @@ input::placeholder{
     column-gap: 4rem;
     max-width: 80%;
     margin: 0 auto;
-    margin-top: 3rem;
+  
     
+}
+
+.country-list-container{
+    background-color: #fefee5;
+    padding: 3rem;
 }

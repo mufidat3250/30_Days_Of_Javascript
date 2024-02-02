@@ -1,28 +1,68 @@
 import {countries} from './countries.js' 
 const countryList = document.querySelector('.country-list')
 const input = document.querySelector('.input')
+const firstButton = document.querySelectorAll('.btn')[0];
+const secondButton = document.querySelectorAll('.btn')[1]
+const thirdButton = document.querySelectorAll('.btn')[2]
 
-const buttons = document.querySelectorAll('.btn');
+thirdButton.innerHTML = `<img src = './vectors/A-Z.svg' ></img>`
+let newCountries = []
+console.log(newCountries)
+let filtedArray
 
-let inputValue = ''
-
-buttons.forEach(button => {
-  button.addEventListener('click', seatFunction, false);
-});
-
-function seatFunction() {
-  buttons.forEach(btn => {
-    btn.classList.remove('active')
-  });
-  this.classList.add('active');
-  console.log(this.innerText)
-
-  input.addEventListener('input',(e)=> {
-    inputValue = e.target.value
-    console.log({inputValue})
+input.addEventListener('input',(e)=>{
+    countryList.innerHTML = ''
+    let value = e.target.value
+ filtedArray = countries.filter((count)=> count.toLocaleLowerCase().startsWith(value.toLowerCase()))
+    console.log({filtedArray})
+    getCountries(filtedArray)
 })
-}
-function getCountries (data) {
+
+firstButton.addEventListener('click',function (){
+        input.addEventListener('input',(e)=>{
+            countryList.innerHTML = ''
+            let value = e.target.value
+         filtedArray = countries.filter((count)=> count.toLocaleLowerCase().startsWith(value.toLowerCase()))
+            getCountries(filtedArray)
+        })
+        secondButton.classList.remove('active')
+        thirdButton.classList.remove('active')
+    })
+    firstButton.classList.add('active')
+
+secondButton.addEventListener('click', function (){
+    input.addEventListener('input', function (e){
+        let value = e.target.value
+         filtedArray = countries.filter((count)=> count.toLocaleLowerCase().includes(value.toLowerCase())) 
+        getCountries(filtedArray)
+    })
+    secondButton.classList.add('active')
+    firstButton.classList.remove('active')
+    thirdButton.classList.remove('active')
+
+})
+let count = 0;
+thirdButton.addEventListener('click',(e)=> {
+    let sortedCountry 
+    thirdButton.classList.add('active')
+    firstButton.classList.remove('active')
+    secondButton.classList.remove('active')
+    count ++
+    if(count % 2 == 0){
+        countryList.innerHTML = ''
+        sortedCountry = countries.sort((a, b) => b.localeCompare(a))
+        thirdButton.innerHTML = `<img src = './vectors/A-Z.svg' ></img>`
+       return  getCountries(sortedCountry)
+    } else {
+        countryList.innerHTML = ''
+        sortedCountry = countries.sort((a , b) => a.localeCompare(b))
+        thirdButton.innerHTML = `<img src = './vectors/Z-A.svg' ></img>`
+        return getCountries(sortedCountry)
+    }
+})
+
+
+function getCountries (data = countries) {
     return data.forEach((c)=> {
         let country = document.createElement('div')
         let countryWrapper = document.createElement('div')
@@ -48,6 +88,7 @@ function getCountries (data) {
         country.style.overflow = 'hidden'
     })
 }
-getCountries(countries)
+getCountries()
 countryList.style.display = 'grid'
 countryList.style.gridTemplateColumns = 'repeat(6, 1fr)'
+
