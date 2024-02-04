@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    
+}
+*{
+    box-sizing: border-box;
+}
+.container{
+    width: 90%;
+    height: 90%;
+    /* background-color: red; */
+    margin: auto auto;
+    margin-top: 3rem;
+    padding: 4rem 2rem;
+}
+.container h1{
+    /* font-size: 8rem; */
+    margin: 0;
+}
+.letters{
+    font-size: 25px;
+}
