@@ -6,6 +6,7 @@ const name = document.querySelector(".name");
 const country = document.querySelector(".country");
 const playStore = document.querySelector(".play-store");
 const addPlayer = document.querySelector("#add-player");
+const play = document.querySelector('.add-player')
 const error = document.querySelector(".error");
 const container = document.querySelector(".container");
 const playerContainer = document.createElement("div");
@@ -38,14 +39,14 @@ addPlayer.addEventListener("click", () => {
   } else {
     error.innerHTML = "";
     let newPlayer = { firstName, lastName, score, country, id:generateId()}
-    players.push(newPlayer)
+    users.push(newPlayer)
     playerContainer.innerHTML = ''
     displayedPlayer()
   }
-        
-});
+  });
 
-function handleDelete(id) {
+let  handleDelete = (id) => {
+  console.log(id)
     users = users.filter((user) => user.id !== id);
     console.log('delete button clicked')
     playerContainer.innerHTML = '';
@@ -54,25 +55,38 @@ function handleDelete(id) {
 
 
 
+
 function displayedPlayer  () {
     container.append(playerContainer);
     playerContainer.setAttribute("class", "player-container");
    users.sort((a, b) => b.score - a.score).forEach((p) => {
         const player = document.createElement("div");
-        player.setAttribute("class", "player");
-        player.innerHTML = `<div>
+        const buttonWrapper = document.createElement('div')
+        const imgIcon = document.createElement('img') 
+        const deleteScore = document.createElement('button')
+        const addScore = document.createElement('button')
+        const subtractScore = document.createElement('button') 
+        deleteScore.append(imgIcon)
+        imgIcon.src = './delete.svg'
+      addScore.setAttribute('class', 'btn')
+      subtractScore.setAttribute('class', 'btn')
+      deleteScore.setAttribute('class', 'btn')
+      buttonWrapper.setAttribute('class', 'button-wrapper')
+      player.setAttribute("class", "player");
+      player.appendChild(buttonWrapper)
+      player.innerHTML = `<div>
         <h4 class="name">${p.firstName} ${p.lastName}</h4>
         <p class="date">FEB 2 2024 3:27AM</p>
         </div>
         <h4 class="country">${p.country}</h4>
         <h4 class="play-store">${p.score}</h4>
-        <div class="button-wrapper">
-        <button class="btn" onclick='handleDelete(${p.id})'>
-        <img src="./delete.svg" alt="">
-        </button>
-        <button class="btn">+5</button>
-        <button class="btn">-5</button>
-        </div>`;
+        `;
+         addScore.innerHTML = '+5'
+        subtractScore.innerHTML = '-5'
+        buttonWrapper.append(deleteScore)
+        buttonWrapper.append(addScore)
+        buttonWrapper.append(subtractScore)
+        player.append(buttonWrapper)
         playerContainer.append(player);
     });
 }
