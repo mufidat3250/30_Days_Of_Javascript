@@ -48,12 +48,20 @@ addPlayer.addEventListener("click", () => {
 let  handleDelete = (id) => {
   console.log(id)
     users = users.filter((user) => user.id !== id);
-    console.log('delete button clicked')
     playerContainer.innerHTML = '';
     displayedPlayer()
   };
+let handleSubtract = (id) => {
+    users = users.map((user)=> user.id === id ? ({...user, score: user.score - 5}) : user)
+    playerContainer.innerHTML = ''
+    displayedPlayer()
+}
 
-
+let handleAdd = (id) => {
+  users = users.map((user) => user.id === id ? ({...user, score:user.score + 5}) : user)
+  playerContainer.innerHTML = ''
+  displayedPlayer()
+}
 
 
 function displayedPlayer  () {
@@ -74,6 +82,17 @@ function displayedPlayer  () {
       buttonWrapper.setAttribute('class', 'button-wrapper')
       player.setAttribute("class", "player");
       player.appendChild(buttonWrapper)
+
+      addScore.addEventListener('click', ()=> {
+        handleAdd(p.id)
+      })
+      deleteScore.addEventListener('click', ()=> {
+        handleDelete(p.id)
+      })
+      subtractScore.addEventListener('click',()=> {
+      handleSubtract(p.id)
+      })
+
       player.innerHTML = `<div>
         <h4 class="name">${p.firstName} ${p.lastName}</h4>
         <p class="date">FEB 2 2024 3:27AM</p>
